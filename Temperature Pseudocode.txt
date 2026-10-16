@@ -1,0 +1,7 @@
+START
+    SET temperature = 28
+
+    SET safeTemperature = (temperature >= 18) AND (temperature <= 30)
+
+    OUTPUT "Temperature Safe: " + safeTemperature
+END
