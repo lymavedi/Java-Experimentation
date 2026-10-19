@@ -688,7 +688,7 @@ public class PrototypeGradeCalculator {
             Thread.currentThread().interrupt();
         }
         
-        System.out.println("Learner             : " + learner));
+        System.out.println("Learner             : " + learner);
         System.out.println("");
         System.out.println("Mathematics Average : " + String.format("%.2f", mathAverage));
         System.out.println("Science Average     : " + String.format("%.2f", scienceAverage));
