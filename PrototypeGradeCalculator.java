@@ -28,14 +28,18 @@ Version Prot.0.1.3-Alpha | October 19, 2026
 - english and filipino section have been improved too with the same modifications as above
 - completed all subjects
 - made decimal limiters for the averages section and report card display section
+
+Version Prot.0.1.4-Alpha | October 20, 2026
+- added more loops 
+- printf function experimentation and implementation
+- researched and limited inputs of ID numbers, making it only accept dashes and numbers only using the Regex function of Java ".matches". 
 */
 
 public class PrototypeGradeCalculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        System.out.println("THE PROGRAM IS LOADING. PLEASE WAIT.");
-        System.out.println("");
+        System.out.printf("THE PROGRAM IS LOADING. PLEASE WAIT.%n");
         
         try {
                 Thread.sleep(2000);
@@ -57,11 +61,8 @@ public class PrototypeGradeCalculator {
         
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        
-        System.out.println("");
-        System.out.println("");
-        System.out.println("                Scanner Prototype Project Test-001              ");
-        System.out.println("");
+
+        System.out.printf("%n%n" + "                Scanner Prototype Project Test-001              %n");
         
         try {
                 Thread.sleep(1000);
@@ -69,7 +70,7 @@ public class PrototypeGradeCalculator {
             Thread.currentThread().interrupt();
         }
             
-        System.out.println("This project is a General Average Calculator which takes values from a Written Task, Performance Task, and Exam, which is computed into the subject grade, then divided with other subject grades to get the general average of the student.");
+        System.out.printf("This project is a General Average Calculator which takes values from a Written Task, Performance Task, and Exam, which is computed into the subject grade, then divided with other subject grades to get the general average of the student.%n%n");
         
         try {
                 Thread.sleep(1000);
@@ -77,9 +78,7 @@ public class PrototypeGradeCalculator {
             Thread.currentThread().interrupt();
         }
         
-        System.out.println("");
-        System.out.println("Additonally, this program is composed of four phases: Subject Average Calculator, General Average Calculator, Grade Checks,  Final Score Display. Note: I do not know how to incorporate the transmutation table yet, so it will not be included. Everything will follow the new possible order that final grades as calculated will never be transmutated on the next school year.");
-        System.out.println("");
+        System.out.printf("Additonally, this program is composed of four phases: Subject Average Calculator, General Average Calculator, Grade Checks,  Final Score Display. Note: I do not know how to incorporate the transmutation table yet, so it will not be included. Everything will follow the new possible order that final grades as calculated will never be transmutated on the next school year.%n%n");
         
         try {
                 Thread.sleep(15000);
@@ -91,9 +90,7 @@ public class PrototypeGradeCalculator {
         System.out.flush();
         
         System.out.println("                Scanner Prototype Project Test-001              ");
-        System.out.println("                  SCPTECH 11A GRADE CALCULATOR                  ");
-        System.out.println("");
-        System.out.println("");
+        System.out.printf("                  SCPTECH 11A GRADE CALCULATOR                  %n%n");
         
         try {
                 Thread.sleep(5000);
@@ -108,20 +105,27 @@ public class PrototypeGradeCalculator {
         
         System.out.println("Input Student's Full Name: ");
         String learner = input.nextLine();
-        System.out.println("");
-        
-        System.out.println("Input Student's Full Student ID Number: ");
-        String studID = input.nextLine();
-        System.out.println("");
-        
-        System.out.println("Input Student's Days Attended out of 70 School Days: ");
+
+        System.out.printf("%n" + "Input Student's Full Student ID Number: ");
+        String studID = ""; 
+
+        while (true) {
+            studID = input.nextLine();
+            if (studID.matches("^[0-9-]+$")) {
+                break;
+            } else {
+                System.out.println("The ID number format is invalid. Alphabetical or special characters are not allowed.");
+                System.out.print("Recheck the student ID and input it again: ");
+            }
+        }
+        System.out.printf("Saved Student ID: %s%n%n", studID); 
+
+        System.out.printf("Input Student's Days Attended out of 70 School Days: %n%n");
         double attendanceDays = input.nextDouble();
-        System.out.println("");
         while (attendanceDays < QUARTERLY_MIN_ATTENDANCE || attendanceDays > QUARTERLY_SCHOOL_DAYS) {
             System.out.println("The amount of days are out of bounds.");
-            System.out.print("Recheck the days attended by the learner and input it again: ");
+            System.out.printf("Recheck the days attended by the learner and input it again: %n%n");
             attendanceDays = input.nextDouble();
-            System.out.println("");
         }
         
         System.out.print("\033[H\033[2J");
